@@ -7,7 +7,7 @@ def notifyMe(title, message):
     notification.notify(
         title = title,
         message = message,
-        app_icon = "F:\\vsCode-python\\covid-19_project\\icon.ico",
+        app_icon = "*******\\********\\****\\icon.ico",             # *** = file path of icon.ico
         timeout = 10
     )
 
@@ -16,7 +16,6 @@ def getData(url):
     return r.text
 
 if __name__ == "__main__":
-    # notifyMe("prabal", "this topic is on covid-19 pendamic.")
     while True:
         covidData = getData("https://www.mohfw.gov.in//")
 
@@ -29,13 +28,14 @@ if __name__ == "__main__":
         myDataStr = myDataStr[1:]
         listItem = myDataStr.split("\n\n")
 
-        states = ["Delhi", "Maharashtra", "Uttar Pradesh"]
+        states = ["Delhi", "Maharashtra", "Uttar Pradesh"]                  # States yOU WANT TO get updated about
 
         for item in listItem[0:34]:
             listItem1 = item.split("\n")
             if listItem1[1] in states:
                 nTitle = 'Covid-19 Update'
-                nInfo = f"State : {listItem1[1]}\nActive : {listItem1[2]}\nCured : {listItem1[3]} & Deaths : {listItem1[4]}\nTotal : {listItem1[5]}"
+                nInfo = f"State : {listItem1[1]}\nActive : {listItem1[2]}\nCured : {listItem1[3]} &
+                Deaths : {listItem1[4]}\nTotal : {listItem1[5]}"
                 notifyMe(nTitle,nInfo)
                 time.sleep(2)
-        time.sleep(720)
+        time.sleep(7200)
